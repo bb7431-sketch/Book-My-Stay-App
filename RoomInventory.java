@@ -1,15 +1,16 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.io.Serializable;
 
 /**
  * RoomInventory manages the availability of different room types.
- * It uses a HashMap to store room types as keys and their corresponding 
- * available counts as values, providing a centralized "Single Source of Truth".
+ * It is now Serializable to support data persistence.
  * 
  * @author Book My Stay Team
- * @version 3.0
+ * @version 12.0
  */
-public class RoomInventory {
+public class RoomInventory implements Serializable {
+    private static final long serialVersionUID = 1L;
     // HashMap to store centralized availability mapping
     // String: Room Type, Integer: Available Count
     private Map<String, Integer> inventory;
@@ -47,7 +48,7 @@ public class RoomInventory {
     public void displayInventory() {
         System.out.println("Current Room Inventory Status:");
         System.out.println("-----------------------------");
-        if (inventory.isEmpty()) {
+        if (inventory == null || inventory.isEmpty()) {
             System.out.println("Inventory is empty.");
         } else {
             for (Map.Entry<String, Integer> entry : inventory.entrySet()) {

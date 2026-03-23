@@ -1,11 +1,14 @@
+import java.io.Serializable;
+
 /**
  * Reservation represents a guest's intent to book a room.
- * It serves as a data holder for booking requests before they are processed.
+ * It is now Serializable to support data persistence.
  * 
  * @author Book My Stay Team
- * @version 5.0
+ * @version 12.0
  */
-public class Reservation {
+public class Reservation implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String guestName;
     private String roomType;
 
